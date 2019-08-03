@@ -5,5 +5,7 @@ INSERT INTO user VALUES(1,'user1',1);
 INSERT INTO user VALUES(2,'user2',0);
 
 INSERT INTO course VALUES(1,'JAVA','hoc truc tuyen');
+INSERT INTO course VALUES(2,'PHP','hoc truc tuyen');
+INSERT INTO course VALUES(3,'PYTHON','offline');
 
 INSERT INTO classroom values(1,1,1,2, CURRENT_TIMESTAMP(),1)

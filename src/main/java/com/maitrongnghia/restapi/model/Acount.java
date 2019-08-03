@@ -13,8 +13,7 @@ public class Acount {
     private String role;
 
     @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public long getId() {
         return id;
     }

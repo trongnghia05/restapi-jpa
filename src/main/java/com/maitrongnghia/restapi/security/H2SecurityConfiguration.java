@@ -13,6 +13,8 @@ public class H2SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/h2-console/**").authorizeRequests().anyRequest().permitAll();
         http.antMatcher("/get/**").authorizeRequests().anyRequest().permitAll();
+        http.antMatcher("/getlistclassromm/**").authorizeRequests().anyRequest().permitAll();
+        http.antMatcher("/adduser/**").authorizeRequests().anyRequest().permitAll();
         http.csrf().disable();
         http.headers().frameOptions().disable();
 

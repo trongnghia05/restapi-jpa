@@ -14,6 +14,19 @@ public class Course implements Serializable {
     private String name;
     private String description;
 
+    public Course(long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
+
+    public Course(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+    public Course(){
+
+    }
     @Id
     @NotNull
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +40,6 @@ public class Course implements Serializable {
     }
 
     @NotNull
-    @NotBlank
     @Size(max = 50)
     @Column(name = "name", length = 50, nullable = false)
     public String getName() {

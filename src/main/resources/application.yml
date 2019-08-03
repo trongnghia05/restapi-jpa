@@ -24,6 +24,7 @@ spring:
       ddl-auto: none
 
 
+
   servlet:
     multipart:
       enabled: true

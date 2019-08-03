@@ -1,24 +1,24 @@
 package com.maitrongnghia.restapi.model;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Objects;
+
 
 @Entity
-@Table(name = "Classroom")
-public class Classroom implements Serializable {
+@Table(name = "classroom")
+public class Classroom   {
+
     private long id;
     private Timestamp startTime;
-    private boolean status;
-    private Course course;
-    private User student;
-    private User teacher;
+    private long status;
+    private long courseId;
+    private long kidId;
+    private long teacherId;
 
     @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     public long getId() {
         return id;
     }
@@ -27,8 +27,7 @@ public class Classroom implements Serializable {
         this.id = id;
     }
 
-    @NotNull
-    @Column(name = "startTime", nullable = false)
+    @Column(name="starttime")
     public Timestamp getStartTime() {
         return startTime;
     }
@@ -37,67 +36,39 @@ public class Classroom implements Serializable {
         this.startTime = startTime;
     }
 
-    @NotNull
-    @Column(name = "status", nullable = false)
-    public boolean isStatus() {
+    @Column(name="status")
+    public long getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(long status) {
         this.status = status;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Classroom classroom = (Classroom) o;
-        return id == classroom.id &&
-                status == classroom.status &&
-                Objects.equals(startTime, classroom.startTime);
+    @Column(name="courseid")
+    public long getCourseId() {
+        return courseId;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, startTime, status);
+    public void setCourseId(long courseId) {
+        this.courseId = courseId;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
-    public Course getCourse() {
-        return course;
+    @Column(name="kidid")
+    public long getKidId() {
+        return kidId;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setKidId(long kidId) {
+        this.kidId = kidId;
     }
 
-    @OneToOne(fetch = FetchType.EAGER)
-    public User getStudent() {
-        return student;
+    @Column(name="teacherid")
+    public long getTeacherId() {
+        return teacherId;
     }
 
-    public void setStudent(User student) {
-        this.student = student;
-    }
-
-    @OneToOne(fetch = FetchType.EAGER)
-    public User getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(User teacher) {
-        this.teacher = teacher;
-    }
-
-    @Override
-    public String toString() {
-        return "Classroom{" +
-                "id=" + id +
-                ", startTime=" + startTime +
-                ", status=" + status +
-                ", course=" + course +
-                ", student=" + student +
-                ", teacher=" + teacher +
-                '}';
+    public void setTeacherId(long teacherId) {
+        this.teacherId = teacherId;
     }
 }

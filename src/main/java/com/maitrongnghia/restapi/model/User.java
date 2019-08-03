@@ -8,27 +8,40 @@ import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
-@Table(name = "User")
-public class User implements Serializable {
-    private long id;
+@Table(name = "user")
+public class User{
+    private int id;
     private String name;
-    private Integer role;
+    private int role;
+
+    public User(int id,String name, int role) {
+        this.id = id;
+        this.name = name;
+        this.role = role;
+    }
+    public User(String name, int role) {
+        this.name = name;
+        this.role = role;
+    }
+    public User(int id,String name) {
+        this.id = id;
+        this.name = name;
+    }
+    public User(){
+
+    }
 
     @Id
-    @NotNull
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
     @NotNull
-    @NotBlank
-    @Size(max = 50)
     @Column(name = "name", length = 50, nullable = false)
     public String getName() {
         return name;
@@ -39,14 +52,12 @@ public class User implements Serializable {
     }
 
     @NotNull
-    @NotBlank
-    @Size(max = 50)
     @Column(name = "role", length = 50, nullable = false)
-    public Integer getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(int role) {
         this.role = role;
     }
 
